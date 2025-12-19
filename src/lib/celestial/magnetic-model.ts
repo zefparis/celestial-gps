@@ -29,7 +29,7 @@ export function calculateMagneticField(
   latitude: number,
   longitude: number,
   altitudeKm: number = 0,
-  year: number = new Date().getFullYear()
+  _year: number = new Date().getFullYear()
 ): MagneticFieldModel {
   const phi = toRadians(latitude);
   const lambda = toRadians(longitude);
