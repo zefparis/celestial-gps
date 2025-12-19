@@ -1,0 +1,215 @@
+{
+  "welcome": {
+    "title": "CELESTIAL GPS",
+    "subtitle": "Validation GPS par Consensus Céleste Multi-Capteurs",
+    "cta_start": "Démarrer l'Expérience",
+    "cta_learn_more": "En savoir plus"
+  },
+  "features": {
+    "anti_spoofing": "Anti-Spoofing GPS",
+    "multi_sensor": "Consensus Multi-Capteurs",
+    "real_time": "Validation Temps Réel"
+  },
+  "concept": {
+    "slide1": {
+      "title": "Qu'est-ce que le GPS Céleste ?",
+      "description": "Un système révolutionnaire qui valide votre position GPS en la croisant avec des observations célestes réelles",
+      "point1": "Position solaire calculée vs observée",
+      "point2": "Orientation magnétique théorique vs mesurée",
+      "point3": "Score d'intégrité 0-100% en temps réel"
+    },
+    "slide2": {
+      "title": "Pourquoi c'est révolutionnaire ?",
+      "description": "Les attaques de spoofing GPS coûtent des milliards chaque année. Notre système les détecte instantanément.",
+      "point1": "Détection de spoofing avec 99% de précision",
+      "point2": "Impossible à contourner sans falsifier le ciel",
+      "point3": "Protection pour drones, véhicules autonomes, aviation"
+    },
+    "slide3": {
+      "title": "Comment ça marche ?",
+      "description": "Algorithme de consensus comparant 5+ sources indépendantes",
+      "point1": "GPS ← Position déclarée",
+      "point2": "Soleil/Étoiles ← Position réelle attendue",
+      "point3": "Magnétomètre ← Vérification d'orientation"
+    }
+  },
+  "permissions": {
+    "title": "Permissions Requises",
+    "required": "Requis",
+    "grant": "Autoriser",
+    "granted": "Autorisé",
+    "continue_to_calibration": "Continuer vers la Calibration",
+    "gps": {
+      "title": "Localisation GPS",
+      "description": "Pour obtenir votre position et altitude en temps réel"
+    },
+    "motion": {
+      "title": "Capteur de Mouvement",
+      "description": "Pour mesurer l'orientation et l'inclinaison de l'appareil"
+    },
+    "orientation": {
+      "title": "Boussole Magnétique",
+      "description": "Pour connaître le cap magnétique et valider l'azimut"
+    },
+    "camera": {
+      "title": "Caméra (optionnel)",
+      "description": "Pour détecter visuellement le soleil et les étoiles"
+    }
+  },
+  "calibration": {
+    "title": "Calibration",
+    "start": "Démarrer la Calibration",
+    "in_progress": "Calibration en cours...",
+    "success": "Calibration Réussie",
+    "retry": "Réessayer",
+    "magnetometer": {
+      "title": "Calibration du Magnétomètre",
+      "instructions": "Dessinez un 8 dans l'air avec votre téléphone"
+    },
+    "gps": {
+      "title": "Acquisition GPS",
+      "instructions": "Veuillez patienter pendant l'acquisition du signal GPS"
+    },
+    "sensors": {
+      "title": "Vérification des Capteurs",
+      "instructions": "Validation de tous les capteurs requis"
+    }
+  },
+  "nav": {
+    "live": "Validation Live",
+    "scenarios": "Scénarios",
+    "history": "Historique"
+  },
+  "validation": {
+    "consensus_description": "Score calculé par consensus multi-capteurs",
+    "status": {
+      "NOMINAL": "Position GPS Validée",
+      "DRIFT": "Dérive GPS Détectée",
+      "SPOOFING": "Attaque de Spoofing Détectée",
+      "UNCERTAIN": "Validation Incertaine"
+    }
+  },
+  "alerts": {
+    "spoofing_detected": "Spoofing GPS Détecté !",
+    "spoofing_description": "Écart de {{delta}}km entre le GPS et les observations célestes"
+  },
+  "celestial": {
+    "dome_title": "Dôme Céleste 3D",
+    "sun": "Soleil",
+    "moon": "Lune",
+    "stars": "Étoiles"
+  },
+  "metrics": {
+    "title": "Métriques",
+    "gps_position": "Position GPS",
+    "altitude": "Altitude",
+    "sun_delta": "Delta Solaire",
+    "magnetic_delta": "Delta Magnétique",
+    "barometric_alt": "Altitude Barométrique",
+    "avg_integrity": "Intégrité Moyenne",
+    "integrity": "Intégrité"
+  },
+  "map": {
+    "title": "Carte de Position"
+  },
+  "sensors": {
+    "title": "État des Capteurs",
+    "gps": "GPS",
+    "magnetometer": "Magnétomètre",
+    "barometer": "Baromètre",
+    "gyroscope": "Gyroscope",
+    "accelerometer": "Accéléromètre",
+    "ambient_light": "Lumière Ambiante",
+    "camera": "Caméra"
+  },
+  "history": {
+    "realtime_title": "Historique Temps Réel",
+    "title": "Historique & Analyse",
+    "description": "Consultez vos sessions passées et analysez les tendances",
+    "no_sessions": "Aucune session enregistrée",
+    "no_sessions_description": "Effectuez une validation pour commencer"
+  },
+  "actions": {
+    "refresh": "Actualiser",
+    "export_json": "Exporter JSON",
+    "export_all": "Tout Exporter",
+    "clear": "Effacer",
+    "calibrate": "Calibrer",
+    "start_test": "Démarrer le Test",
+    "stop": "Arrêter"
+  },
+  "scenarios": {
+    "title": "Scénarios de Test",
+    "description": "Testez le système dans différentes conditions",
+    "clear_results": "Effacer les Résultats",
+    "running": "Test en cours...",
+    "nominal": {
+      "title": "Validation Nominale",
+      "description": "Conditions optimales, score attendu >95%"
+    },
+    "urban_canyon": {
+      "title": "Canyon Urbain",
+      "description": "Zone urbaine dense avec réflexions GPS"
+    },
+    "gps_drift": {
+      "title": "Dérive GPS",
+      "description": "Simulation d'une dérive progressive de 100m"
+    },
+    "spoofing_attack": {
+      "title": "Attaque Spoofing",
+      "description": "Simulation d'une attaque GPS de 2.2km"
+    },
+    "altitude_climb": {
+      "title": "Ascension Altitude",
+      "description": "Test cohérence GPS/Baromètre en montée"
+    },
+    "night_stars": {
+      "title": "Navigation Stellaire Nocturne",
+      "description": "Validation par étoiles en conditions nocturnes"
+    },
+    "indoor_outdoor": {
+      "title": "Transitions Intérieur/Extérieur",
+      "description": "Test de robustesse lors de pertes GPS"
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "general": "Général",
+    "sensors": "Capteurs",
+    "validation": "Validation",
+    "advanced": "Avancé",
+    "language": "Langue",
+    "theme": "Thème",
+    "units": "Unités",
+    "notifications": "Notifications"
+  },
+  "theme": {
+    "dark": "Sombre",
+    "light": "Clair"
+  },
+  "units": {
+    "metric": "Métrique",
+    "imperial": "Impérial"
+  },
+  "common": {
+    "yes": "Oui",
+    "no": "Non",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "save": "Sauvegarder",
+    "delete": "Supprimer",
+    "back": "Retour",
+    "next": "Suivant",
+    "skip": "Passer"
+  },
+  "status": {
+    "nominal": "Nominal",
+    "warning": "Attention",
+    "critical": "Critique",
+    "offline": "Hors ligne",
+    "active": "Actif"
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "welcome": {
+    "title": "CELESTIAL GPS",
+    "subtitle": "GPS Validation by Multi-Sensor Celestial Consensus",
+    "cta_start": "Start Experience",
+    "cta_learn_more": "Learn More"
+  },
+  "features": {
+    "anti_spoofing": "GPS Anti-Spoofing",
+    "multi_sensor": "Multi-Sensor Consensus",
+    "real_time": "Real-Time Validation"
+  },
+  "concept": {
+    "slide1": {
+      "title": "What is Celestial GPS?",
+      "description": "A revolutionary system that validates your GPS position by cross-referencing it with real celestial observations",
+      "point1": "Calculated vs observed solar position",
+      "point2": "Theoretical vs measured magnetic orientation",
+      "point3": "Real-time 0-100% integrity score"
+    },
+    "slide2": {
+      "title": "Why is it revolutionary?",
+      "description": "GPS spoofing attacks cost billions annually. Our system detects them instantly.",
+      "point1": "Spoofing detection with 99% accuracy",
+      "point2": "Impossible to bypass without faking the sky",
+      "point3": "Protection for drones, autonomous vehicles, aviation"
+    },
+    "slide3": {
+      "title": "How does it work?",
+      "description": "Consensus algorithm comparing 5+ independent sources",
+      "point1": "GPS ← Declared position",
+      "point2": "Sun/Stars ← Expected real position",
+      "point3": "Magnetometer ← Orientation verification"
+    }
+  },
+  "permissions": {
+    "title": "Required Permissions",
+    "required": "Required",
+    "grant": "Grant",
+    "granted": "Granted",
+    "continue_to_calibration": "Continue to Calibration",
+    "gps": {
+      "title": "GPS Location",
+      "description": "To get your real-time position and altitude"
+    },
+    "motion": {
+      "title": "Motion Sensor",
+      "description": "To measure device orientation and tilt"
+    },
+    "orientation": {
+      "title": "Magnetic Compass",
+      "description": "To know magnetic heading and validate azimuth"
+    },
+    "camera": {
+      "title": "Camera (optional)",
+      "description": "To visually detect sun and stars"
+    }
+  },
+  "calibration": {
+    "title": "Calibration",
+    "start": "Start Calibration",
+    "in_progress": "Calibrating...",
+    "success": "Calibration Successful",
+    "retry": "Retry",
+    "magnetometer": {
+      "title": "Magnetometer Calibration",
+      "instructions": "Draw a figure-8 in the air with your phone"
+    },
+    "gps": {
+      "title": "GPS Acquisition",
+      "instructions": "Please wait while we acquire precise GPS signal"
+    },
+    "sensors": {
+      "title": "Sensors Check",
+      "instructions": "Validating all required sensors"
+    }
+  },
+  "nav": {
+    "live": "Live Validation",
+    "scenarios": "Scenarios",
+    "history": "History"
+  },
+  "validation": {
+    "consensus_description": "Score calculated by multi-sensor consensus",
+    "status": {
+      "NOMINAL": "GPS Position Validated",
+      "DRIFT": "GPS Drift Detected",
+      "SPOOFING": "Spoofing Attack Detected",
+      "UNCERTAIN": "Validation Uncertain"
+    }
+  },
+  "alerts": {
+    "spoofing_detected": "GPS Spoofing Detected!",
+    "spoofing_description": "{{delta}}km discrepancy between GPS and celestial observations"
+  },
+  "celestial": {
+    "dome_title": "3D Celestial Dome",
+    "sun": "Sun",
+    "moon": "Moon",
+    "stars": "Stars"
+  },
+  "metrics": {
+    "title": "Metrics",
+    "gps_position": "GPS Position",
+    "altitude": "Altitude",
+    "sun_delta": "Sun Delta",
+    "magnetic_delta": "Magnetic Delta",
+    "barometric_alt": "Barometric Altitude",
+    "avg_integrity": "Average Integrity",
+    "integrity": "Integrity"
+  },
+  "map": {
+    "title": "Position Map"
+  },
+  "sensors": {
+    "title": "Sensors Status",
+    "gps": "GPS",
+    "magnetometer": "Magnetometer",
+    "barometer": "Barometer",
+    "gyroscope": "Gyroscope",
+    "accelerometer": "Accelerometer",
+    "ambient_light": "Ambient Light",
+    "camera": "Camera"
+  },
+  "history": {
+    "realtime_title": "Real-Time History",
+    "title": "History & Analysis",
+    "description": "Review your past sessions and analyze trends",
+    "no_sessions": "No recorded sessions",
+    "no_sessions_description": "Perform a validation to start"
+  },
+  "actions": {
+    "refresh": "Refresh",
+    "export_json": "Export JSON",
+    "export_all": "Export All",
+    "clear": "Clear",
+    "calibrate": "Calibrate",
+    "start_test": "Start Test",
+    "stop": "Stop"
+  },
+  "scenarios": {
+    "title": "Test Scenarios",
+    "description": "Test the system under different conditions",
+    "clear_results": "Clear Results",
+    "running": "Test Running...",
+    "nominal": {
+      "title": "Nominal Validation",
+      "description": "Optimal conditions, expected score >95%"
+    },
+    "urban_canyon": {
+      "title": "Urban Canyon",
+      "description": "Dense urban area with GPS reflections"
+    },
+    "gps_drift": {
+      "title": "GPS Drift",
+      "description": "Simulation of 100m progressive drift"
+    },
+    "spoofing_attack": {
+      "title": "Spoofing Attack",
+      "description": "Simulation of 2.2km GPS attack"
+    },
+    "altitude_climb": {
+      "title": "Altitude Climb",
+      "description": "Test GPS/Barometer consistency during ascent"
+    },
+    "night_stars": {
+      "title": "Stellar Navigation at Night",
+      "description": "Validation by stars in night conditions"
+    },
+    "indoor_outdoor": {
+      "title": "Indoor/Outdoor Transitions",
+      "description": "Robustness test during GPS losses"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General",
+    "sensors": "Sensors",
+    "validation": "Validation",
+    "advanced": "Advanced",
+    "language": "Language",
+    "theme": "Theme",
+    "units": "Units",
+    "notifications": "Notifications"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "units": {
+    "metric": "Metric",
+    "imperial": "Imperial"
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "back": "Back",
+    "next": "Next",
+    "skip": "Skip"
+  },
+  "status": {
+    "nominal": "Nominal",
+    "warning": "Warning",
+    "critical": "Critical",
+    "offline": "Offline",
+    "active": "Active"
+  }
+}
