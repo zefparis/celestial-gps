@@ -27,8 +27,11 @@ export function MainDashboard() {
       <header className="sticky top-0 z-50 bg-bg-deep/80 backdrop-blur-xl border-b border-border-subtle safe-top">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            {/* Logo + Title */}
-            <div className="flex items-center gap-3">
+            {/* Logo + Title - Clickable to return to home */}
+            <button
+              onClick={() => setActiveTab('live')}
+              className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
+            >
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
@@ -38,7 +41,7 @@ export function MainDashboard() {
               <h1 className="text-2xl font-display font-bold holographic">
                 CELESTIAL GPS
               </h1>
-            </div>
+            </button>
 
             {/* Actions */}
             <div className="flex items-center gap-3">
