@@ -1588,6 +1588,366 @@ const RTK_CONFIG = {
 
 ---
 
+### 12.5 Planning de Développement
+
+#### 12.5.1 Diagramme de Gantt Global
+
+**Période :** Janvier 2025 - Septembre 2025 (9 mois)
+
+```
+                    Q1 2025                 Q2 2025                 Q3 2025                 Q4 2025
+                Jan    Feb    Mar    Apr    Mai    Jun    Jul    Aoû    Sep
+                ├──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤
+v2.0 (Baseline) ████                                                               
+                │
+                └─► Jalon 0: Release production
+                    2025-01-15
+                
+v2.1 Features   ──────██████████████────────                                       
+                      │             │                                              
+                      ▼             ▼                                              
+                   Début J0+1    Jalon 1: v2.1 Release                            
+                   2025-01-16    2025-03-31                                       
+                                                                                   
+  ├─ Camera Sun ──────████████────────                                            
+  │  Detection        │       │                                                   
+  │                   ▼       ▼                                                   
+  │                Start   Delivery                                               
+  │                J+1     M+2.5                                                  
+  │                                                                                
+  └─ Extended   ──────────██████████                                              
+     Star (500)            │         │                                            
+                           ▼         ▼                                            
+                        Start    Delivery                                         
+                        M+1      M+3                                              
+                                                                                   
+v2.2 Features   ────────────────────██████████████                                
+                                    │             │                               
+                                    ▼             ▼                               
+                                 Début J1+1    Jalon 2: v2.2 Release             
+                                 2025-04-01    2025-06-30                         
+                                                                                   
+  ├─ ML LSTM    ────────────────────████████────                                  
+  │  Training                        │       │                                    
+  │                                  ▼       ▼                                    
+  │                               Start   Delivery                                
+  │                               M+3     M+5                                     
+  │                                                                                
+  └─ IGRF-13    ────────────────────────██████                                    
+     Full (n=13)                        │     │                                   
+                                        ▼     ▼                                   
+                                     Start  Delivery                              
+                                     M+4    M+6                                   
+                                                                                   
+v3.0 Features   ────────────────────────────────────██████████████                
+                                                    │             │               
+                                                    ▼             ▼               
+                                                 Début J2+1   Jalon 3: v3.0       
+                                                 2025-07-01   2025-09-30          
+                                                                                   
+  ├─ RTK        ────────────────────────────────────██████────                    
+  │  Integration                                    │     │                       
+  │                                                  ▼     ▼                       
+  │                                               Start Delivery                  
+  │                                               M+6   M+8                       
+  │                                                                                
+  └─ API        ────────────────────────────────────────████                      
+     External                                           │   │                     
+                                                        ▼   ▼                     
+                                                     Start End                    
+                                                     M+7   M+9                    
+
+Tests         ████████████████████████████████████████████████████████            
+Continus      └─────────────────────────────────────────────────────┘            
+              Unit + Integration + E2E (toute la période)                        
+
+Documentation ████████████████████████████████████████████████████████            
+Technique     └─────────────────────────────────────────────────────┘            
+              Mise à jour continue + revue finale M+9                            
+```
+
+**Légende :**
+- `████` : Phase de développement actif
+- `▼` : Jalon / Livrable
+- `M+X` : Mois depuis le début (M+0 = Janvier 2025)
+
+---
+
+#### 12.5.2 Jalons et Livrables
+
+| Jalon | Date Cible | Version | Livrables Principaux | Critères de Succès |
+|-------|------------|---------|---------------------|-------------------|
+| **J0** | 2025-01-15 | v2.0 | • PWA production<br>• Tests S23 validés<br>• README + Rapport technique | • Score intégrité >96% (nominal)<br>• 0 bugs critiques<br>• Lighthouse >95 |
+| **J1** | 2025-03-31 | v2.1 | • Détection caméra soleil<br>• Catalogue 500 étoiles<br>• Tests nocturnes | • Précision caméra ±1°<br>• 3+ étoiles détectées<br>• Score nocturne >90% |
+| **J2** | 2025-06-30 | v2.2 | • Modèle LSTM entraîné<br>• IGRF-13 complet (n=13)<br>• API documentation | • Drift détection 97%<br>• Déclinaison ±0.1°<br>• API REST fonctionnelle |
+| **J3** | 2025-09-30 | v3.0 | • Support RTK<br>• API externe publique<br>• Certifications démarrées | • Précision RTK <5cm<br>• 1000 req/min API<br>• Dossiers ISO/DO soumis |
+
+---
+
+#### 12.5.3 Détail par Phase
+
+##### Phase 1 : v2.1 (Janvier - Mars 2025) — 2.5 mois
+
+**Objectif :** Améliorer précision diurne et nocturne
+
+| Tâche | Durée | Dépendances | Ressources | Risque |
+|-------|-------|-------------|------------|--------|
+| **1.1 Caméra Sun Detection** | | | | |
+| ├─ Setup OpenCV mobile | 5j | J0 | 1 dev | Faible |
+| ├─ Algorithme détection blob | 10j | 1.1 | 1 dev | Moyen |
+| ├─ Training YOLOv8-Nano | 15j | 1.1 | 1 ML engineer + GPU | Élevé |
+| ├─ Intégration pipeline | 8j | 1.1, 1.2, 1.3 | 1 dev | Faible |
+| └─ Tests terrain (100 sessions) | 7j | 1.4 | 1 testeur + S23 | Faible |
+| **1.2 Extended Star Catalog** | | | | |
+| ├─ Import Hipparcos (500 étoiles) | 3j | J0 | 1 dev | Faible |
+| ├─ Algorithme sélection visible | 5j | 2.1 | 1 dev | Faible |
+| ├─ Consensus multi-étoiles | 8j | 2.2 | 1 dev | Moyen |
+| ├─ UI visualisation dôme 3D | 10j | 2.3 | 1 dev frontend | Faible |
+| └─ Tests nuit claire (50 sessions) | 10j | 2.4 | 1 testeur | Moyen |
+| **1.3 Intégration & Tests** | | | | |
+| ├─ Tests unitaires (200+ tests) | 7j | 1.1, 1.2 | 1 dev | Faible |
+| ├─ Tests E2E Playwright | 5j | 3.1 | 1 dev | Faible |
+| ├─ Benchmarks performance | 3j | 3.2 | 1 dev | Faible |
+| └─ Documentation utilisateur | 5j | 3.3 | 1 tech writer | Faible |
+
+**Charge totale :** ~101 jours-homme = **2 développeurs × 2.5 mois**
+
+**Budget phase 1 :** €30,000
+- Développeurs : 2 × €10k/mois × 2.5 = €50k (taux réduit startup)
+- GPU Cloud (training) : €2k
+- Tests terrain : €1k
+- Contingence 10% : €3k
+
+---
+
+##### Phase 2 : v2.2 (Avril - Juin 2025) — 3 mois
+
+**Objectif :** Intelligence artificielle + précision magnétique maximale
+
+| Tâche | Durée | Dépendances | Ressources | Risque |
+|-------|-------|-------------|------------|--------|
+| **2.1 ML Anomaly Detection** | | | | |
+| ├─ Architecture LSTM | 8j | J1 | 1 ML engineer | Moyen |
+| ├─ Pipeline data (10k sessions) | 10j | 2.1 | 1 data engineer | Élevé |
+| ├─ Training + hyperparams tuning | 20j | 2.2 | 1 ML eng + GPU | Élevé |
+| ├─ Intégration TensorFlow.js | 7j | 2.3 | 1 dev | Moyen |
+| └─ Validation terrain (200 sessions) | 10j | 2.4 | 1 testeur | Moyen |
+| **2.2 IGRF-13 Complet** | | | | |
+| ├─ Import coefficients n=1 à 13 | 5j | J1 | 1 dev | Faible |
+| ├─ Optimisation calculs (cache) | 8j | 2.1 | 1 dev | Moyen |
+| ├─ Tests précision ±0.1° | 5j | 2.2 | 1 dev | Faible |
+| └─ Benchmarks CPU/mémoire | 3j | 2.3 | 1 dev | Faible |
+| **2.3 API REST Externe** | | | | |
+| ├─ Design API (OpenAPI 3.0) | 5j | J1 | 1 architect | Faible |
+| ├─ Backend Node.js/FastAPI | 15j | 3.1 | 1 backend dev | Moyen |
+| ├─ Authentication JWT | 5j | 3.2 | 1 backend dev | Moyen |
+| ├─ Rate limiting (1000 req/min) | 3j | 3.3 | 1 devops | Faible |
+| └─ Documentation Swagger | 5j | 3.4 | 1 tech writer | Faible |
+
+**Charge totale :** ~109 jours-homme = **2.5 développeurs × 3 mois**
+
+**Budget phase 2 :** €45,000
+- ML engineer : 1 × €12k/mois × 3 = €36k
+- Développeurs : 1.5 × €10k/mois × 3 = €45k
+- GPU Cloud (training LSTM) : €5k
+- Infra API (AWS/GCP) : €2k
+- Contingence 10% : €5k
+
+---
+
+##### Phase 3 : v3.0 (Juillet - Septembre 2025) — 3 mois
+
+**Objectif :** Précision cm + API production + certifications
+
+| Tâche | Durée | Dépendances | Ressources | Risque |
+|-------|-------|-------------|------------|--------|
+| **3.1 RTK Integration** | | | | |
+| ├─ Support RTCM 3.x parser | 10j | J2 | 1 dev GNSS | Élevé |
+| ├─ Base station simulator | 8j | 3.1 | 1 dev | Moyen |
+| ├─ Algorithme validation RTK | 12j | 3.2 | 1 dev | Élevé |
+| ├─ Tests terrain (<5cm accuracy) | 15j | 3.3 | 1 testeur + RTK gear | Élevé |
+| └─ Documentation technique | 5j | 3.4 | 1 tech writer | Faible |
+| **3.2 API Production** | | | | |
+| ├─ Infrastructure scalable (K8s) | 10j | J2 | 1 devops | Moyen |
+| ├─ Monitoring Grafana/Prometheus | 5j | 4.1 | 1 devops | Faible |
+| ├─ Load testing (10k req/min) | 5j | 4.2 | 1 dev | Moyen |
+| └─ SLA 99.9% uptime | 10j | 4.3 | 1 devops | Élevé |
+| **3.3 Certifications** | | | | |
+| ├─ Dossier ISO 26262 (ASIL-D) | 20j | J2 | 1 safety eng | Élevé |
+| ├─ Dossier DO-178C (Level C) | 20j | J2 | 1 avionics eng | Élevé |
+| ├─ Tests conformité | 10j | 5.1, 5.2 | 2 testeurs | Élevé |
+| └─ Audit externe (Bureau Veritas) | 5j | 5.3 | Auditeur externe | Moyen |
+
+**Charge totale :** ~135 jours-homme = **3 développeurs × 3 mois**
+
+**Budget phase 3 :** €60,000
+- Développeurs GNSS : 1 × €15k/mois × 3 = €45k
+- DevOps : 1 × €12k/mois × 3 = €36k
+- Safety/Avionics engineers : 2 × €18k/mois × 1.5 = €54k
+- Matériel RTK (base station) : €8k
+- Audit externe : €12k
+- Contingence 10% : €16k
+
+---
+
+#### 12.5.4 Diagramme de Gantt Détaillé (Mermaid)
+
+Pour une visualisation interactive dans documentation web :
+
+```mermaid
+gantt
+    title Celestial GPS Validator - Roadmap v2.0 → v3.0
+    dateFormat  YYYY-MM-DD
+    
+    section v2.0
+    Baseline Production          :done,    v20, 2025-01-01, 2025-01-15
+    
+    section v2.1
+    Camera Sun Detection         :active,  cam, 2025-01-16, 45d
+    YOLOv8 Training             :         yolo, after cam, 15d
+    Extended Star Catalog        :         star, 2025-02-01, 40d
+    Integration v2.1             :         int1, after yolo star, 10d
+    Tests Terrain v2.1           :         test1, after int1, 7d
+    Release v2.1                 :milestone, j1, after test1, 0d
+    
+    section v2.2
+    ML LSTM Architecture         :         lstm, 2025-04-01, 20d
+    Data Pipeline 10k sessions   :         data, after lstm, 10d
+    LSTM Training                :crit,    train, after data, 20d
+    IGRF-13 Full (n=13)         :         igrf, 2025-04-15, 25d
+    API REST Design              :         api, 2025-04-01, 15d
+    API Backend Dev              :         apidev, after api, 15d
+    Integration v2.2             :         int2, after train igrf apidev, 10d
+    Tests Terrain v2.2           :         test2, after int2, 10d
+    Release v2.2                 :milestone, j2, after test2, 0d
+    
+    section v3.0
+    RTK RTCM Parser             :crit,    rtk, 2025-07-01, 30d
+    RTK Tests Terrain            :         rtktest, after rtk, 15d
+    API Production (K8s)         :         apiprod, 2025-07-01, 25d
+    Load Testing 10k req/min     :         load, after apiprod, 5d
+    ISO 26262 Dossier            :crit,    iso, 2025-07-01, 60d
+    DO-178C Dossier              :crit,    do178, 2025-07-01, 60d
+    Audit Externe                :         audit, after iso do178, 5d
+    Release v3.0                 :milestone, j3, after audit, 0d
+    
+    section Continu
+    Tests Unitaires              :         unit, 2025-01-01, 270d
+    Documentation                :         doc, 2025-01-01, 270d
+```
+
+**Instructions Mermaid :**
+Pour visualiser, copier le code dans [mermaid.live](https://mermaid.live) ou intégrer dans Markdown (GitHub, GitLab, Notion).
+
+---
+
+#### 12.5.5 Ressources Humaines
+
+**Équipe Core (permanente) :**
+- 1 × Lead Developer (full-stack)
+- 1 × DevOps Engineer
+- 1 × Tech Writer (documentation)
+
+**Équipes Temporaires (par phase) :**
+
+| Phase | Profil | Durée | Charge | Taux Jour |
+|-------|--------|-------|--------|-----------|
+| v2.1 | Frontend Developer | 2.5 mois | 100% | €400/j |
+| v2.1 | ML Engineer | 1 mois | 50% | €600/j |
+| v2.2 | ML Engineer | 3 mois | 100% | €600/j |
+| v2.2 | Backend Developer | 2 mois | 75% | €500/j |
+| v3.0 | GNSS Specialist | 3 mois | 100% | €700/j |
+| v3.0 | Safety Engineer (ISO 26262) | 1.5 mois | 100% | €800/j |
+| v3.0 | Avionics Engineer (DO-178C) | 1.5 mois | 100% | €800/j |
+
+**Total :** 7 FTE (Full-Time Equivalent) sur 9 mois
+
+---
+
+#### 12.5.6 Risques et Mitigation
+
+| Risque | Probabilité | Impact | Mitigation |
+|--------|-------------|--------|------------|
+| **Training LSTM sous-performant** | Moyenne | Élevé | Dataset augmentation + transfer learning depuis modèle pré-entraîné |
+| **RTK gear non disponible** | Faible | Critique | Location matériel (€2k/mois) + partenariat Trimble/u-blox |
+| **Retard certifications ISO/DO** | Élevée | Critique | Démarrage anticipé M+0 (en parallèle dev) + consultant externe |
+| **Dérive budget ML (GPU)** | Moyenne | Moyen | Cloud Spot Instances (AWS/GCP) -70% coût |
+| **Turnover développeurs** | Faible | Élevé | Documentation exhaustive + code review obligatoire |
+
+---
+
+#### 12.5.7 Jalons Financiers
+
+**Décaissements par trimestre :**
+
+| Trimestre | Budget | Cumul | % Total |
+|-----------|--------|-------|---------|
+| Q1 2025 | €30k | €30k | 22% |
+| Q2 2025 | €45k | €75k | 56% |
+| Q3 2025 | €60k | €135k | 100% |
+
+**Revenus potentiels (prévisions conservatrices) :**
+
+| Trimestre | Source | Montant |
+|-----------|--------|---------|
+| Q2 2025 | Subvention BPI France (30% projet) | €40k |
+| Q3 2025 | 1er contrat pilote drone (Parrot) | €50k |
+| Q4 2025 | Licensing API (5 clients × €2k/mois × 3 mois) | €30k |
+
+**ROI estimé :** Break-even à M+10 (Octobre 2025)
+
+---
+
+#### 12.5.8 Dépendances Externes
+
+**Critiques :**
+- ✅ **astronomy-engine** : Stable, pas de breaking changes attendus
+- ⚠️ **TensorFlow.js** : Nouvelle version Q2 2025 (migration possible)
+- ✅ **React/Vite** : Roadmap stable jusqu'à Q4 2025
+- ⚠️ **Sensor API** : Chrome 125+ requis (adoption mobile 85%)
+
+**Partenariats potentiels :**
+- **u-blox** (RTK) : Discussions en cours, MoU prévu M+3
+- **DJI** (drones) : POC prévu M+6
+- **CNES** (spatial) : Collaboration R&D possible M+8
+
+---
+
+#### 12.5.9 KPIs de Suivi
+
+**Métriques techniques :**
+- Code coverage : maintenir >85%
+- Lighthouse score : maintenir >95
+- API latency p95 : <200ms
+- Uptime API : >99.9%
+
+**Métriques business :**
+- GitHub stars : 500+ à M+9
+- Users actifs (PWA) : 1000+ à M+9
+- Clients API : 10+ à M+9
+- Articles de presse : 5+ (TechCrunch, VentureBeat)
+
+---
+
+#### 12.5.10 Plan de Communication
+
+| Jalon | Action | Cible | Canal |
+|-------|--------|-------|-------|
+| J1 (v2.1) | Communiqué presse | Presse tech FR/EN | Email + LinkedIn |
+| J2 (v2.2) | Article blog technique | Développeurs | Medium + Hacker News |
+| J2 (v2.2) | Conférence IEEE PLANS | Académiques | Paper soumis M+5 |
+| J3 (v3.0) | Demo Day investisseurs | VCs deep-tech | Événement Paris M+9 |
+
+---
+
+**Contacts Projet :**
+- **Project Manager :** Benji (IA-SOLUTION)
+- **Lead Developer :** [À définir]
+- **Email :** contact@ia-solution.com
+- **Suivi :** Jira/Linear (sprints 2 semaines)
+
+---
+
 ## Annexes
 
 ### A. Références
@@ -1611,6 +1971,6 @@ const RTK_CONFIG = {
 ---
 
 <p align="center">
-  <b>🛰️ Celestial GPS Validator - Technical Report v2.0</b><br>
+  <b>🛰️ Celestial GPS Validator - Technical Report v2.1.1</b><br>
   <i>Trust the sky, not the signal</i>
 </p>
